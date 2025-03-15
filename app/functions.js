@@ -26,8 +26,20 @@ function timeAgo(timestamp) {
         }
     }
     
-    return "A long time ago";
+    return "Just now";
 }
 
-// Example usage
-console.log(timeAgo("2024-03-10T15:30:00Z"));
+// Create Id
+function createID() {
+    const timestamp = Math.floor(Date.now() / 1000).toString(16); // 4-byte timestamp
+    const random = Math.random().toString(16).substring(2, 12); // 5-byte random value
+    const counter = (Math.floor(Math.random() * 16777215)).toString(16).padStart(6, '0'); // 3-byte counter
+
+    return (timestamp + random + counter).padEnd(24, '0'); // Ensure 24 chars
+}
+
+// Example usage:
+console.log(generateObjectId());
+console.log(createID());
+
+
